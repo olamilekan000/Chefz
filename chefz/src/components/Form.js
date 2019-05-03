@@ -14,8 +14,10 @@ class Form extends React.Component {
 
 	addChef = (e) => {
 		e.preventDefault()
-
 		this.props.addAChef(this.state)
+		this.setState({
+			name: ''
+		})
 	}
 
 	render() {
@@ -30,6 +32,7 @@ class Form extends React.Component {
 			          	type="text" 
 			          	onChange={this.changeInputValue} 
 			          	name="name"
+			          	value={this.state.name}
 			          />
 			          <label htmlFor="text">Enter a chef name</label>
 			        </div>
