@@ -53,6 +53,21 @@ const Mutations = new GraphQLObjectType({
 				args.id = Math.floor(Math.random() * 10)
 				return [...chefs, args]
 			}
+		},
+		updateChef: {
+			type: ChefType,
+			args: {
+				id: { type: new GraphQLNonNull(GraphQLID)},
+				name: { type: new GraphQLNonNull(GraphQLString)}
+			},
+			resolve(parent, args) {
+				const updateChef = chefs.find(data => {
+					return data.id == args.id
+				})
+				console.log(updateChef)
+				updateChef.name = args.name
+				return updateChef
+			}
 		}
 	}
 })
